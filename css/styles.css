@@ -276,17 +276,25 @@ a { color: inherit; text-decoration: none; }
   color: var(--ink-4);
   letter-spacing: .04em;
 }
-/* 正文小作文：单列居中，宽度80% */
+/* 正文小作文：两栏排版，容器居中文字靠左 */
 .philosophy-body {
   max-width: 80vw; margin: 0 auto;
+  column-count: 2;
+  column-gap: 4ch;
+  text-align: left;
 }
 .philosophy-body p {
   font-size: 15px; color: var(--ink-3); line-height: 1.95;
-  margin-bottom: 1rem;
+  column-span: all;
+  text-indent: 2em;
+  margin-bottom: 0;
   transition: color .3s;
 }
-.philosophy-body p:last-child { margin-bottom: 0; }
 .philosophy-body p:hover { color: var(--ink-2); }
+.philosophy-body p + p {
+  column-span: all;
+  text-indent: 2em;
+}
 
 /* ============================================================
    DOMAINS — 优雅列表，非九宫格
