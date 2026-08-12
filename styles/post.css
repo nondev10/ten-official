@@ -123,6 +123,20 @@
 .post-content li { margin-bottom: .5rem; }
 .post-content li::marker { color: var(--ink-4); }
 
+/* ── Tables ── */
+.post-content table {
+  width: 100%; border-collapse: collapse; margin: 2rem 0;
+  font-size: 14px;
+}
+.post-content th, .post-content td {
+  border: 1px solid var(--line-2); padding: 10px 14px; text-align: left;
+}
+.post-content th {
+  background: var(--bg-2); font-weight: 500; color: var(--ink);
+  letter-spacing: .05em; text-transform: uppercase; font-size: 11px;
+}
+.post-content tr:nth-child(even) td { background: rgba(255,255,255,.02); }
+
 /* ── Media Embeds ── */
 .post-media {
   margin: 2rem 0;

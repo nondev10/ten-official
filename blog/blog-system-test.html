@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>内容系统功能测试 · TEN</title>
+<meta name="description" content="验证 Markdown 解析器所有功能：表格、列表、代码块、Mermaid 图、媒体嵌入。" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&family=Barlow+Condensed:wght@300;400;500;600&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="../css/styles.css" />
+<link rel="stylesheet" href="../styles/post.css" />
+</head>
+<body>
+
+<nav class="nav post-nav" id="nav">
+  <a href="../index.html" class="nav-logo">
+    <div class="nav-logo-box"></div>
+    <span class="nav-logo-name">TEN</span>
+  </a>
+  <div class="nav-links"><a href="../index.html">首页</a><a href="../work.html">作品</a><a href="../research.html">研究</a><a href="../blog.html">洞见</a><a href="../translation.html">翻译</a><a href="../index.html#contact">联系</a></div>
+  <button class="nav-burger" id="burger" aria-label="Menu"><span></span><span></span><span></span></button>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="../index.html">首页</a><a href="../work.html">作品</a><a href="../research.html">研究</a><a href="../blog.html">洞见</a><a href="../translation.html">翻译</a><a href="../index.html#contact">联系</a>
+</div>
+
+<section class="post-hero">
+  <div class="post-hero-img"><img src="assets/images/assets/images/hero-placeholder.png" alt="" /></div>
+  <div class="post-hero-content">
+    <div class="post-meta-row reveal">
+      <span class="post-cat-badge" style="--cat-color:#7dc4a3">洞见</span>
+      <span class="post-tag">Test</span>
+      <span class="post-date">2026年8月12日</span>
+      
+    </div>
+    <h1 class="post-title reveal r1">内容系统功能测试</h1>
+    <p class="post-author reveal r2">作者：TEN System</p>
+    <p class="post-summary reveal r2">验证 Markdown 解析器所有功能：表格、列表、代码块、Mermaid 图、媒体嵌入。</p>
+  </div>
+</section>
+
+<section class="post-body-section">
+  <div class="post-layout">
+    <main class="post-main">
+      <div class="post-tldr reveal"><span class="tldr-label">TL;DR</span><p>这是一个测试页面，用于验证 TEN 内容引擎的所有功能。</p></div>
+      <div class="post-content reveal r1">
+<h2>1. 标题层级</h2>
+
+<h1>H1 标题</h1>
+<h2>H2 标题</h2>
+<h3>H3 标题</h3>
+<h4>H4 标题</h4>
+
+<h2>2. 文本格式</h2>
+
+<p>这是普通段落文字。<strong>这是粗体文字</strong>。<em>这是斜体文字</em>。<strong><em>这是粗斜体文字</em></strong>。<code>这是行内代码</code>。</p>
+
+<p>链接：<a href="https://example.com">TEN 官网</a></p>
+
+<h2>3. 引用块</h2>
+
+<blockquote><p>这是一段引用文字。</p></blockquote>
+<blockquote><p>引用可以跨越多行。</p></blockquote>
+
+<h2>4. 无序列表</h2>
+
+<ul><li>第一项</li><li>第二项</li><li>第三项</li><li>子项 A</li><li>子项 B</li></ul>
+
+<h2>5. 有序列表</h2>
+
+<ol><li>步骤一</li><li>步骤二</li><li>步骤三</li></ol>
+
+<h2>6. 表格</h2>
+
+<table><thead><tr><th>功能</th><th>状态</th><th>说明</th></tr></thead><tbody><tr><td>标题</td><td>✅</td><td>支持 H1-H6</td></tr><tr><td>粗体</td><td>✅</td><td><strong>加粗</strong></td></tr><tr><td>斜体</td><td>✅</td><td><em>斜体</em></td></tr><tr><td>表格</td><td>✅</td><td>标准 Markdown 表格</td></tr><tr><td>列表</td><td>✅</td><td>有序和无序</td></tr><tr><td>代码块</td><td>✅</td><td>语法高亮</td></tr><tr><td>Mermaid</td><td>✅</td><td>自动转换</td></tr><tr><td>引用</td><td>✅</td><td>blockquote</td></tr></tbody></table>
+
+<h2>7. 代码块</h2>
+
+<pre><code class="language-javascript">const TEN = {
+  name: 'Tenth Extra Nexus',
+  founded: 2024,
+  mission: 'Reform the world'
+};
+
+function greet(name) {
+  return `Hello, ${name}!`;
+}
+
+console.log(greet('TEN'));</code></pre>
+
+<pre><code class="language-python">def fibonacci(n):
+    if n &lt;= 1:
+        return n
+    return fibonacci(n-1) + fibonacci(n-2)
+
+for i in range(10):
+    print(f&quot;F({i}) = {fibonacci(i)}&quot;)</code></pre>
+
+<h2>8. Mermaid 图表</h2>
+
+<figure class="post-media mermaid"><pre class="mermaid">graph TD
+    A[TEN 内容系统] --> B[Markdown 解析器]
+    A --> C[静态生成器]
+    B --> D[表格渲染]
+    B --> E[列表渲染]
+    B --> F[代码高亮]
+    B --> G[Mermaid 转换]
+    C --> H[HTML 输出]
+    C --> I[CSS 注入]
+</pre></figure>
+
+<figure class="post-media mermaid"><pre class="mermaid">sequenceDiagram
+    participant User as 用户
+    participant Engine as 内容引擎
+    participant FS as 文件系统
+
+    User->>Engine: 触发构建
+    Engine->>FS: 读取 .md 文件
+    FS-->>Engine: 返回 markdown 内容
+    Engine->>Engine: 解析 frontmatter
+    Engine->>Engine: 渲染 markdown 为 HTML
+    Engine->>FS: 写入 HTML 文件
+    FS-->>Engine: 确认写入
+    Engine-->>User: 构建完成
+</pre></figure>
+
+<h2>9. 水平分割线</h2>
+
+<hr>
+
+<h2>10. 媒体嵌入</h2>
+
+<h3>图片嵌入</h3>
+
+<figure class="post-media" ><img src="assets/images/hero-placeholder.png" alt="TEN 占位图片示例" loading="lazy"><figcaption>TEN 占位图片示例</figcaption></figure>
+
+<h3>PDF 嵌入</h3>
+
+<figure class="post-media pdf" ><iframe src="assets/documents/sample.pdf" title="示例 PDF 文档" loading="lazy"></iframe>
+
+<h3>视频嵌入（需实际视频文件）</h3>
+
+<figure class="post-media video" ><video controls preload="metadata" poster="assets/images/hero-placeholder.png"><source src="assets/videos/placeholder.mp4"></video><figcaption>示例视频（文件不存在时显示 poster）</figcaption></figure>
+
+<hr>
+
+<p><em>测试页面完成。所有功能已验证。</em></p>
+</div>
+    </main>
+    <aside class="post-sidebar">
+      <nav class="sidebar-nav">
+        <div class="sidebar-section">
+          <h4>浏览更多</h4>
+          <ul><a href="../work.html">全部作品</a><a href="../research.html">全部研究</a><a href="../blog.html">全部洞见</a><a href="../translation.html">全部翻译</a></ul>
+        </div>
+        <div class="sidebar-section"><h4>目录</h4><ul class="toc-list"><li class="toc-item toc-2"><a href="#h-1-">1. 标题层级</a></li><li class="toc-item toc-2"><a href="#h-h2-">H2 标题</a></li><li class="toc-item toc-3"><a href="#h-h3-">H3 标题</a></li><li class="toc-item toc-2"><a href="#h-2-">2. 文本格式</a></li><li class="toc-item toc-2"><a href="#h-3-">3. 引用块</a></li><li class="toc-item toc-2"><a href="#h-4-">4. 无序列表</a></li><li class="toc-item toc-2"><a href="#h-5-">5. 有序列表</a></li><li class="toc-item toc-2"><a href="#h-6-">6. 表格</a></li><li class="toc-item toc-2"><a href="#h-7-">7. 代码块</a></li><li class="toc-item toc-2"><a href="#h-8-mermaid-">8. Mermaid 图表</a></li><li class="toc-item toc-2"><a href="#h-9-">9. 水平分割线</a></li><li class="toc-item toc-2"><a href="#h-10-">10. 媒体嵌入</a></li><li class="toc-item toc-3"><a href="#h--">图片嵌入</a></li><li class="toc-item toc-3"><a href="#h-pdf-">PDF 嵌入</a></li><li class="toc-item toc-3"><a href="#h--">视频嵌入（需实际视频文件）</a></li></ul></div>
+      </nav>
+    </aside>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <div class="footer-logo-box"></div>
+      <span class="footer-brand-name">Tenth Extra Nexus</span>
+      <p class="footer-brand-desc">一个尝试用理性与表达重新组织世界的创作小组</p>
+    </div>
+    <div class="footer-col"><h4>导航</h4><ul>
+      <li><a href="../index.html">首页</a></li>
+      <li><a href="../work.html">作品</a></li>
+      <li><a href="../research.html">研究</a></li>
+      <li><a href="../blog.html">洞见</a></li>
+    </ul></div>
+    <div class="footer-col"><h4>联系</h4><ul><li><a href="mailto:hello@tenthmedia.example">hello@tenthmedia.example</a></li></ul></div>
+  </div>
+  <div class="footer-bottom">
+    <span class="footer-copy">© 2024–2026 Tenth Extra Nexus</span>
+    <span class="footer-slogan">Reform the world.</span>
+  </div>
+</footer>
+
+<script src="../js/main.js"></script>
+<script>
+  document.querySelectorAll('.reveal').forEach(el => {
+    const obs = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } });
+    }, { threshold: 0.1 });
+    obs.observe(el);
+  });
+  if (document.querySelector('.mermaid')) {
+    const s = document.createElement('script');
+    s.src = 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js';
+    s.onload = () => mermaid.run();
+    document.head.appendChild(s);
+  }
+  if (document.querySelector('.math-display')) {
+    const ks = document.createElement('link');
+    ks.rel = 'stylesheet'; ks.href = 'https://cdn.jsdelivr.net/npm/katex@0.16.15/dist/katex.min.css';
+    document.head.appendChild(ks);
+    const ms = document.createElement('script');
+    ms.src = 'https://cdn.jsdelivr.net/npm/katex@0.16.15/dist/katex.min.js';
+    ms.onload = () => {
+      document.querySelectorAll('.math-display').forEach(el => {
+        el.innerHTML = katex.renderToString(el.textContent.trim(), { throwOnError: false, displayMode: true });
+      });
+    };
+    document.head.appendChild(ms);
+  }
+</script>
+</body>
+</html>
