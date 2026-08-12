@@ -1,4 +1,4 @@
-/* ============================================================
+﻿/* ============================================================
    TEN v8 — Paperclip × Palantir
    Font: Noto Sans SC (正文) / DIN Alternate (标题) / JetBrains Mono (标签数据)
    Palette: 中性冷调，无金无红，无渐变，无网格背景
@@ -279,21 +279,20 @@ a { color: inherit; text-decoration: none; }
 /* 正文小作文：两栏排版，容器居中文字靠左 */
 .philosophy-body {
   max-width: 80vw; margin: 0 auto;
-  column-count: 2;
-  column-gap: 4ch;
+  display: flex;
+  gap: 4ch;
   text-align: left;
 }
-.philosophy-body p {
+.philosophy-body .col {
+  flex: 1;
   font-size: 15px; color: var(--ink-3); line-height: 1.95;
-  column-span: all;
-  text-indent: 2em;
-  margin-bottom: 0;
   transition: color .3s;
 }
-.philosophy-body p:hover { color: var(--ink-2); }
-.philosophy-body p + p {
-  column-span: all;
-  text-indent: 2em;
+.philosophy-body .col:hover { color: var(--ink-2); }
+.philosophy-body .col-1 { text-indent: 2em; }
+.philosophy-body .col-2 { text-indent: 2em; }
+@media (max-width: 768px) {
+  .philosophy-body { flex-direction: column; }
 }
 
 /* ============================================================
