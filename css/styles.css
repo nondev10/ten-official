@@ -222,6 +222,7 @@ a { color: inherit; text-decoration: none; }
   background: var(--bg);
   position: relative;
   overflow: hidden;
+  z-index: 1;
 }
 /* 黑白层叠装饰层 */
 .philosophy::before,
@@ -250,9 +251,13 @@ a { color: inherit; text-decoration: none; }
   font-size: clamp(8rem, 20vw, 16rem);
   font-weight: 400; line-height: 1;
   color: transparent;
-  -webkit-text-stroke: 1px var(--ink-4);
-  opacity: .25;
-  margin-bottom: -2rem;
+  -webkit-text-stroke: 1.5px var(--ink-3);
+  opacity: .18;
+  position: absolute;
+  top: -40px;
+  left: 0;
+  pointer-events: none;
+  z-index: 0;
   letter-spacing: -.02em;
 }
 .philosophy-quote {
@@ -280,13 +285,13 @@ a { color: inherit; text-decoration: none; }
 .domains-bg-num {
   position: absolute;
   left: -2vw;
-  top: 120px;
+  top: 60px;
   font-family: var(--din);
   font-size: clamp(10rem, 28vw, 22rem);
   font-weight: 400;
   color: transparent;
-  -webkit-text-stroke: 1px var(--ink-4);
-  opacity: .07;
+  -webkit-text-stroke: 1.5px var(--ink-3);
+  opacity: .12;
   line-height: 1;
   pointer-events: none;
   z-index: 0;
@@ -343,13 +348,13 @@ a { color: inherit; text-decoration: none; }
 .works-bg-num {
   position: absolute;
   left: -3vw;
-  top: 80px;
+  top: 60px;
   font-family: var(--din);
   font-size: clamp(10rem, 28vw, 22rem);
   font-weight: 400;
   color: transparent;
-  -webkit-text-stroke: 1px var(--ink-4);
-  opacity: .07;
+  -webkit-text-stroke: 1.5px var(--ink-3);
+  opacity: .12;
   line-height: 1;
   pointer-events: none;
   z-index: 0;
@@ -378,24 +383,28 @@ a { color: inherit; text-decoration: none; }
 /* 短项目：hover 右侧弹出信息栏 */
 .work-item.short .work-item-content {
   position: absolute;
-  top: 0; right: 0; bottom: auto;
+  top: 0; right: 0; bottom: 0;
   width: 220px;
+  height: 100%;
   padding: 24px 20px;
   background: var(--bg-2);
   opacity: 0;
   transform: translateX(20px);
   transition: transform .4s var(--ease), opacity .4s var(--ease);
   border-left: 1px solid var(--line-2);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
 }
 .work-item.short:hover .work-item-content {
   opacity: 1;
   transform: translateX(0);
 }
-/* 普通项目：底部信息 */
+/* 普通项目：底部信息 + 渐变遮罩 */
 .work-item:not(.short) .work-item-content {
   position: absolute; bottom: 0; left: 0; right: 0;
   padding: 32px;
-  background: linear-gradient(to top, var(--bg) 0%, var(--bg) 60%, transparent 100%);
+  background: linear-gradient(to top, var(--bg) 0%, var(--bg) 50%, transparent 100%);
   opacity: 0;
   transform: translateY(20px);
   transition: transform .4s var(--ease), opacity .4s var(--ease);
@@ -455,8 +464,8 @@ a { color: inherit; text-decoration: none; }
   font-size: clamp(10rem, 28vw, 22rem);
   font-weight: 400;
   color: transparent;
-  -webkit-text-stroke: 1px var(--ink-4);
-  opacity: .07;
+  -webkit-text-stroke: 1.5px var(--ink-3);
+  opacity: .12;
   line-height: 1;
   pointer-events: none;
   z-index: 0;
