@@ -13,22 +13,18 @@
 </head>
 <body>
 
-<!-- NAV -->
 <nav class="nav post-nav" id="nav">
-  <a href="/" class="nav-logo">
+  <a href="../index.html" class="nav-logo">
     <div class="nav-logo-box"></div>
     <span class="nav-logo-name">TEN</span>
   </a>
-  <div class="nav-links"><a href="/">首页</a><a href="/work.html">作品</a><a href="/research.html">研究</a><a href="/blog.html">洞见</a><a href="/translation.html">翻译</a><a href="/#contact">联系</a></div>
-  <button class="nav-burger" id="burger" aria-label="Menu">
-    <span></span><span></span><span></span>
-  </button>
+  <div class="nav-links"><a href="../index.html">首页</a><a href="../work.html">作品</a><a href="../research.html">研究</a><a href="../blog.html">洞见</a><a href="../translation.html">翻译</a><a href="../index.html#contact">联系</a></div>
+  <button class="nav-burger" id="burger" aria-label="Menu"><span></span><span></span><span></span></button>
 </nav>
 <div class="mobile-menu" id="mobileMenu">
-  <a href="/">首页</a><a href="/work.html">作品</a><a href="/research.html">研究</a><a href="/blog.html">洞见</a><a href="/translation.html">翻译</a><a href="/#contact">联系</a>
+  <a href="../index.html">首页</a><a href="../work.html">作品</a><a href="../research.html">研究</a><a href="../blog.html">洞见</a><a href="../translation.html">翻译</a><a href="../index.html#contact">联系</a>
 </div>
 
-<!-- POST HERO -->
 <section class="post-hero">
   <div class="post-hero-img"><img src="assets/images/work-2.jpg" alt="" /></div>
   <div class="post-hero-content">
@@ -44,24 +40,17 @@
   </div>
 </section>
 
-<!-- POST BODY + SIDEBAR -->
 <section class="post-body-section">
   <div class="post-layout">
     <main class="post-main">
-      
-      <div class="post-tldr reveal">
-        <span class="tldr-label">TL;DR</span>
-        <p>从零到一建立一套可复用、可扩展的团队协作标准，覆盖文档格式、版本控制、审核流程与工具链配置四个维度。</p>
-      </div>
-      <div class="post-content reveal r1">
-        <br></p><h2>为什么需要标准</h2></p><p>协作中最常见的问题不是技术问题，而是<strong>对齐成本过高</strong>。</p><p>当五人同时编辑同一份文档时，如果没有明确的标准，就会出现：<br>- 五种不同的文件格式混用<br>- 命名规则各取所需<br>- 版本历史不可追溯<br>- 最终交付物无法整合</p><p>《标准制定方法论》白皮书就是为了解决这个问题而写的。它不是理论文章，而是一份<strong>可以直接应用的协作框架</strong>。</p><p></p><hr></p><p></p><h2>核心框架</h2></p><p>白皮书提出了一个三层模型：</p><p>``<code>mermaid<br>graph TD<br>    A[标准层] --&gt; B[规范层]<br>    B --&gt; C[执行层]<br>    A --&gt;|「我们是什么」| D[原则]<br>    B --&gt;|「我们怎么做」| E[流程]<br>    C --&gt;|「工具链配置」| F[自动化]<br></code>`<code></p><p></p><h3>第一层：标准层（Standards）</h3></p><p>回答「我们是谁」。包括：<br>- 项目愿景与目标声明<br>- 核心价值准则<br>- 边界定义（什么不做）</p><p></p><h3>第二层：规范层（Specifications）</h3></p><p>回答「我们怎么做」。包括：<br>- 文档格式规范<br>- 命名约定<br>- 代码审查流程<br>- 发布流程</p><p></p><h3>第三层：执行层（Execution）</h3></p><p>回答「工具怎么配」。包括：<br>- 编辑器配置<br>- CI/CD 管道<br>- 自动化检查</p><p></p><hr></p><p></p><h2>实际应用案例</h2></p><p>白皮书中包含了三个完整案例：</p><p></p><h3>案例一：多作者技术文档协作</h3></p><p></code>`<code><br>┌─────────────────────────────────────────────┐<br>│  Git Flow + Markdown + Review Lint         │<br>│                                             │<br>│  master ← develop ← feature/article-XXX    │<br>│      ↑             ↑            ↑           │<br>│   发布          写作          草稿         │<br>└─────────────────────────────────────────────┘<br></code>`<code></p><p></p><h3>案例二：开源库的版本管理</h3></p><p></code>`<code><br>semver: MAJOR.MINOR.PATCH<br>  - MAJOR: 不兼容的 API 变更<br>  - MINOR: 向后兼容的功能新增<br>  - PATCH: 向后兼容的问题修复<br></code>``</p><p></p><hr></p><p></p><h2>PDF 完整版</h2></p><p>完整的白皮书（含附录、模板与检查清单）以下载：</p><p><br>&lt;!-- MEDIA_EMBED:eyJ0eXBlIjoicGRmIiwic3JjIjoiYXNzZXRzL2RvY3VtZW50cy93aGl0ZXBhcGVyLXN0YW5kYXJkLXYxLnBkZiIsImxhYmVsIjoi5a6M5pW055m955qu5LmmIFBERiJ9 --&gt;</p><p><br></p><hr></p><p></p><h2>联系方式</h2></p><p>白皮书采用 CC BY-NC 4.0 许可证，欢迎非商业用途的引用与改编。如有建议或反馈，请发送邮件至 standards@tenthmedia.example。<br>
-      </div>
+      <div class="post-tldr reveal"><span class="tldr-label">TL;DR</span><p>从零到一建立一套可复用、可扩展的团队协作标准，覆盖文档格式、版本控制、审核流程与工具链配置四个维度。</p></div>
+      <div class="post-content reveal r1"><br></p><h2>为什么需要标准</h2></p><p>协作中最常见的问题不是技术问题，而是<strong>对齐成本过高</strong>。</p><p>当五人同时编辑同一份文档时，如果没有明确的标准，就会出现：<br>- 五种不同的文件格式混用<br>- 命名规则各取所需<br>- 版本历史不可追溯<br>- 最终交付物无法整合</p><p>《标准制定方法论》白皮书就是为了解决这个问题而写的。它不是理论文章，而是一份<strong>可以直接应用的协作框架</strong>。</p><p></p><hr></p><p></p><h2>核心框架</h2></p><p>白皮书提出了一个三层模型：</p><p>``<code>mermaid<br>graph TD<br>    A[标准层] --&gt; B[规范层]<br>    B --&gt; C[执行层]<br>    A --&gt;|「我们是什么」| D[原则]<br>    B --&gt;|「我们怎么做」| E[流程]<br>    C --&gt;|「工具链配置」| F[自动化]<br></code>`<code></p><p></p><h3>第一层：标准层（Standards）</h3></p><p>回答「我们是谁」。包括：<br>- 项目愿景与目标声明<br>- 核心价值准则<br>- 边界定义（什么不做）</p><p></p><h3>第二层：规范层（Specifications）</h3></p><p>回答「我们怎么做」。包括：<br>- 文档格式规范<br>- 命名约定<br>- 代码审查流程<br>- 发布流程</p><p></p><h3>第三层：执行层（Execution）</h3></p><p>回答「工具怎么配」。包括：<br>- 编辑器配置<br>- CI/CD 管道<br>- 自动化检查</p><p></p><hr></p><p></p><h2>实际应用案例</h2></p><p>白皮书中包含了三个完整案例：</p><p></p><h3>案例一：多作者技术文档协作</h3></p><p></code>`<code><br>┌─────────────────────────────────────────────┐<br>│  Git Flow + Markdown + Review Lint         │<br>│                                             │<br>│  master ← develop ← feature/article-XXX    │<br>│      ↑             ↑            ↑           │<br>│   发布          写作          草稿         │<br>└─────────────────────────────────────────────┘<br></code>`<code></p><p></p><h3>案例二：开源库的版本管理</h3></p><p></code>`<code><br>semver: MAJOR.MINOR.PATCH<br>  - MAJOR: 不兼容的 API 变更<br>  - MINOR: 向后兼容的功能新增<br>  - PATCH: 向后兼容的问题修复<br></code>``</p><p></p><hr></p><p></p><h2>PDF 完整版</h2></p><p>完整的白皮书（含附录、模板与检查清单）以下载：</p><p><br>&lt;!-- MEDIA_EMBED:eyJ0eXBlIjoicGRmIiwic3JjIjoiYXNzZXRzL2RvY3VtZW50cy93aGl0ZXBhcGVyLXN0YW5kYXJkLXYxLnBkZiIsImxhYmVsIjoi5a6M5pW055m955qu5LmmIFBERiJ9 --&gt;</p><p><br></p><hr></p><p></p><h2>联系方式</h2></p><p>白皮书采用 CC BY-NC 4.0 许可证，欢迎非商业用途的引用与改编。如有建议或反馈，请发送邮件至 standards@tenthmedia.example。<br></div>
     </main>
     <aside class="post-sidebar">
       <nav class="sidebar-nav">
         <div class="sidebar-section">
           <h4>浏览更多</h4>
-          <ul><a href="/work.html">全部作品</a><a href="/research.html">全部研究</a><a href="/blog.html">全部洞见</a><a href="/translation.html">全部翻译</a></ul>
+          <ul><a href="../work.html">全部作品</a><a href="../research.html">全部研究</a><a href="../blog.html">全部洞见</a><a href="../translation.html">全部翻译</a></ul>
         </div>
         
       </nav>
@@ -69,7 +58,6 @@
   </div>
 </section>
 
-<!-- FOOTER -->
 <footer>
   <div class="footer-inner">
     <div class="footer-brand">
@@ -77,21 +65,13 @@
       <span class="footer-brand-name">Tenth Extra Nexus</span>
       <p class="footer-brand-desc">一个尝试用理性与表达重新组织世界的创作小组</p>
     </div>
-    <div class="footer-col">
-      <h4>导航</h4>
-      <ul>
-        <li><a href="/">首页</a></li>
-        <li><a href="/work.html">作品</a></li>
-        <li><a href="/research.html">研究</a></li>
-        <li><a href="/blog.html">洞见</a></li>
-      </ul>
-    </div>
-    <div class="footer-col">
-      <h4>联系</h4>
-      <ul>
-        <li><a href="mailto:hello@tenthmedia.example">hello@tenthmedia.example</a></li>
-      </ul>
-    </div>
+    <div class="footer-col"><h4>导航</h4><ul>
+      <li><a href="../index.html">首页</a></li>
+      <li><a href="../work.html">作品</a></li>
+      <li><a href="../research.html">研究</a></li>
+      <li><a href="../blog.html">洞见</a></li>
+    </ul></div>
+    <div class="footer-col"><h4>联系</h4><ul><li><a href="mailto:hello@tenthmedia.example">hello@tenthmedia.example</a></li></ul></div>
   </div>
   <div class="footer-bottom">
     <span class="footer-copy">© 2024–2026 Tenth Extra Nexus</span>
@@ -101,21 +81,18 @@
 
 <script src="../js/main.js"></script>
 <script>
-  // Post-specific JS: scroll reveal for post sections
   document.querySelectorAll('.reveal').forEach(el => {
     const obs = new IntersectionObserver(entries => {
       entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } });
     }, { threshold: 0.1 });
     obs.observe(el);
   });
-  // Mermaid init (if any mermaid figures present)
   if (document.querySelector('.mermaid')) {
     const s = document.createElement('script');
     s.src = 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js';
     s.onload = () => mermaid.run();
     document.head.appendChild(s);
   }
-  // KaTeX init (if any math present)
   if (document.querySelector('.math-display')) {
     const ks = document.createElement('link');
     ks.rel = 'stylesheet'; ks.href = 'https://cdn.jsdelivr.net/npm/katex@0.16.15/dist/katex.min.css';
