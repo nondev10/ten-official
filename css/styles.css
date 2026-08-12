@@ -380,6 +380,7 @@ a { color: inherit; text-decoration: none; }
   grid-auto-rows: minmax(280px, auto);
   gap: 2px;
   background: var(--line-2);
+  margin-top: 48px;
   position: relative;
   z-index: 1;
 }
