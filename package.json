@@ -1,0 +1,18 @@
+{
+  "name": "ten-site",
+  "version": "8.24.0",
+  "description": "TEN — Tenth Extra Nexus. Paperclip × Palantir style content site.",
+  "private": true,
+  "scripts": {
+    "dev": "node build/generate.js --watch",
+    "build": "node build/generate.js",
+    "start": "npx serve -s build"
+  },
+  "devDependencies": {
+    "marked": "^14.1.2",
+    "katex": "^0.16.15",
+    "mermaid": "^11.4.0",
+    "mime": "^4.0.4",
+    "chokidar": "^4.0.1"
+  }
+}

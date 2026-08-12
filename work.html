@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>作品 · TEN</title>
+<meta name="description" content="作品 合集" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&family=Barlow+Condensed:wght@300;400;500;600&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="../css/styles.css" />
+<link rel="stylesheet" href="../styles/post.css" />
+</head>
+<body>
+
+<nav class="nav post-nav" id="nav">
+  <a href="/" class="nav-logo">
+    <div class="nav-logo-box"></div>
+    <span class="nav-logo-name">TEN</span>
+  </a>
+  <div class="nav-links"><a href="/">首页</a><a href="/work.html">作品</a><a href="/research.html">研究</a><a href="/blog.html">洞见</a><a href="/translation.html">翻译</a><a href="/#contact">联系</a></div>
+  <button class="nav-burger" id="burger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="/">首页</a><a href="/work.html">作品</a><a href="/research.html">研究</a><a href="/blog.html">洞见</a><a href="/translation.html">翻译</a><a href="/#contact">联系</a>
+</div>
+
+<!-- PAGE HEADER -->
+<section class="list-hero" style="padding-top:160px;padding-bottom:80px;border-bottom:1px solid var(--line-2)">
+  <div class="section-inner">
+    <div class="section-kicker reveal">作品</div>
+    <h2 class="section-title reveal r1">作品<span style="color:#7eb8da">·</span>2 篇</h2>
+  </div>
+</section>
+
+<!-- LIST -->
+<section class="list-section">
+  <div class="section-inner">
+    <div class="list-grid reveal r1">
+      
+    <a href="//work/work-video-concept.html" class="list-card">
+      <div class="list-card-meta">
+        <span class="list-card-cat" style="color:#7eb8da">作品</span>
+        <span class="list-card-date">2026-07-12</span>
+        <span class="list-card-tag">Video</span>
+      </div>
+      <h3 class="list-card-title">概念短片系列</h3>
+      <p class="list-card-summary">探索提问的结构与表达方式，从镜头语言到叙事节奏的完整思考。</p>
+      <span class="list-card-arrow">→</span>
+    </a>
+      
+    <a href="//work/work-whitepaper.html" class="list-card">
+      <div class="list-card-meta">
+        <span class="list-card-cat" style="color:#7eb8da">作品</span>
+        <span class="list-card-date">2026-04-18</span>
+        <span class="list-card-tag">Article</span>
+      </div>
+      <h3 class="list-card-title">《标准制定方法论》白皮书</h3>
+      <p class="list-card-summary">多人协作中沉淀的规范、版本控制与工具链。一份可操作的协作框架。</p>
+      <span class="list-card-arrow">→</span>
+    </a>
+    </div>
+    
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <div class="footer-logo-box"></div>
+      <span class="footer-brand-name">Tenth Extra Nexus</span>
+      <p class="footer-brand-desc">一个尝试用理性与表达重新组织世界的创作小组</p>
+    </div>
+    <div class="footer-col">
+      <h4>导航</h4>
+      <ul>
+        <li><a href="/">首页</a></li>
+        <li><a href="/work.html">作品</a></li>
+        <li><a href="/research.html">研究</a></li>
+        <li><a href="/blog.html">洞见</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>联系</h4>
+      <ul>
+        <li><a href="mailto:hello@tenthmedia.example">hello@tenthmedia.example</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span class="footer-copy">© 2024–2026 Tenth Extra Nexus</span>
+    <span class="footer-slogan">Reform the world.</span>
+  </div>
+</footer>
+
+<script src="../js/main.js"></script>
+<script>
+  document.querySelectorAll('.reveal').forEach(el => {
+    const obs = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } });
+    }, { threshold: 0.1 });
+    obs.observe(el);
+  });
+</script>
+</body>
+</html>
