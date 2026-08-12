@@ -357,6 +357,7 @@ a { color: inherit; text-decoration: none; }
   background: var(--bg);
   position: relative;
   overflow: hidden;
+  padding-bottom: 60px;
 }
 /* 背景空心数字装饰（左偏，与标题轻微重叠） */
 .works-bg-num {
@@ -461,7 +462,7 @@ a { color: inherit; text-decoration: none; }
 /* ============================================================
    BLOG — 无限横向滚动（Palantir风格）
    ============================================================ */
-.blog { background: var(--bg-2); overflow: hidden; }
+.blog { background: var(--bg-2); overflow: hidden; padding-top: 60px; }
 .blog-header {
   display: flex; justify-content: space-between; align-items: flex-end;
   margin-bottom: 60px; padding: 0 5vw;
