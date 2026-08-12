@@ -626,7 +626,6 @@ footer { border-top: 1px solid var(--line-2); padding: 60px 5vw 40px; background
   .work-item:nth-child(5) { grid-column: 3 / 7; grid-row: 3 / 4; }
   .works-grid { grid-auto-rows: minmax(200px, auto); }
   .blog-card { flex: 0 0 300px; }
-  .footer-inner { grid-template-columns: 1fr 1fr; }
 }
 @media (max-width: 768px) {
   .nav-links { display: none; }
