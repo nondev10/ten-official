@@ -4,7 +4,7 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>内容系统功能测试 · TEN</title>
-<meta name="description" content="验证 Markdown 解析器所有功能：表格、列表、代码块、Mermaid 图、媒体嵌入。" />
+<meta name="description" content="验证 Markdown 解析器所有功能。" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&family=Barlow+Condensed:wght@300;400;500;600&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet" />
@@ -31,12 +31,12 @@
     <div class="post-meta-row reveal">
       <span class="post-cat-badge" style="--cat-color:#7dc4a3">洞见</span>
       <span class="post-tag">Test</span>
-      <span class="post-date">2026年8月12日</span>
+      <span class="post-date">2026年8月13日</span>
       
     </div>
     <h1 class="post-title reveal r1">内容系统功能测试</h1>
     <p class="post-author reveal r2">作者：TEN System</p>
-    <p class="post-summary reveal r2">验证 Markdown 解析器所有功能：表格、列表、代码块、Mermaid 图、媒体嵌入。</p>
+    <p class="post-summary reveal r2">验证 Markdown 解析器所有功能。</p>
   </div>
 </section>
 
@@ -50,7 +50,6 @@
 <h1>H1 标题</h1>
 <h2>H2 标题</h2>
 <h3>H3 标题</h3>
-<h4>H4 标题</h4>
 
 <h2>2. 文本格式</h2>
 
@@ -100,24 +99,6 @@ for i in range(10):
     B --> D[表格渲染]
     B --> E[列表渲染]
     B --> F[代码高亮]
-    B --> G[Mermaid 转换]
-    C --> H[HTML 输出]
-    C --> I[CSS 注入]
-</pre></figure>
-
-<figure class="post-media mermaid"><pre class="mermaid">sequenceDiagram
-    participant User as 用户
-    participant Engine as 内容引擎
-    participant FS as 文件系统
-
-    User->>Engine: 触发构建
-    Engine->>FS: 读取 .md 文件
-    FS-->>Engine: 返回 markdown 内容
-    Engine->>Engine: 解析 frontmatter
-    Engine->>Engine: 渲染 markdown 为 HTML
-    Engine->>FS: 写入 HTML 文件
-    FS-->>Engine: 确认写入
-    Engine-->>User: 构建完成
 </pre></figure>
 
 <h2>9. 水平分割线</h2>
@@ -134,9 +115,9 @@ for i in range(10):
 
 <figure class="post-media pdf" ><iframe src="assets/documents/sample.pdf" title="示例 PDF 文档" loading="lazy"></iframe>
 
-<h3>视频嵌入（需实际视频文件）</h3>
+<h3>视频嵌入（占位）</h3>
 
-<figure class="post-media video" ><video controls preload="metadata" poster="assets/images/hero-placeholder.png"><source src="assets/videos/placeholder.mp4"></video><figcaption>示例视频（文件不存在时显示 poster）</figcaption></figure>
+<figure class="post-media video" ><video controls preload="metadata" poster="assets/images/hero-placeholder.png"><source src="assets/videos/placeholder.mp4"></video><figcaption>示例视频</figcaption></figure>
 
 <hr>
 
@@ -149,7 +130,7 @@ for i in range(10):
           <h4>浏览更多</h4>
           <ul><a href="../work.html">全部作品</a><a href="../research.html">全部研究</a><a href="../blog.html">全部洞见</a><a href="../translation.html">全部翻译</a></ul>
         </div>
-        <div class="sidebar-section"><h4>目录</h4><ul class="toc-list"><li class="toc-item toc-2"><a href="#h-1-">1. 标题层级</a></li><li class="toc-item toc-2"><a href="#h-h2-">H2 标题</a></li><li class="toc-item toc-3"><a href="#h-h3-">H3 标题</a></li><li class="toc-item toc-2"><a href="#h-2-">2. 文本格式</a></li><li class="toc-item toc-2"><a href="#h-3-">3. 引用块</a></li><li class="toc-item toc-2"><a href="#h-4-">4. 无序列表</a></li><li class="toc-item toc-2"><a href="#h-5-">5. 有序列表</a></li><li class="toc-item toc-2"><a href="#h-6-">6. 表格</a></li><li class="toc-item toc-2"><a href="#h-7-">7. 代码块</a></li><li class="toc-item toc-2"><a href="#h-8-mermaid-">8. Mermaid 图表</a></li><li class="toc-item toc-2"><a href="#h-9-">9. 水平分割线</a></li><li class="toc-item toc-2"><a href="#h-10-">10. 媒体嵌入</a></li><li class="toc-item toc-3"><a href="#h--">图片嵌入</a></li><li class="toc-item toc-3"><a href="#h-pdf-">PDF 嵌入</a></li><li class="toc-item toc-3"><a href="#h--">视频嵌入（需实际视频文件）</a></li></ul></div>
+        <div class="sidebar-section"><h4>目录</h4><ul class="toc-list"><li class="toc-item toc-2"><a href="#h-1-">1. 标题层级</a></li><li class="toc-item toc-2"><a href="#h-h2-">H2 标题</a></li><li class="toc-item toc-3"><a href="#h-h3-">H3 标题</a></li><li class="toc-item toc-2"><a href="#h-2-">2. 文本格式</a></li><li class="toc-item toc-2"><a href="#h-3-">3. 引用块</a></li><li class="toc-item toc-2"><a href="#h-4-">4. 无序列表</a></li><li class="toc-item toc-2"><a href="#h-5-">5. 有序列表</a></li><li class="toc-item toc-2"><a href="#h-6-">6. 表格</a></li><li class="toc-item toc-2"><a href="#h-7-">7. 代码块</a></li><li class="toc-item toc-2"><a href="#h-8-mermaid-">8. Mermaid 图表</a></li><li class="toc-item toc-2"><a href="#h-9-">9. 水平分割线</a></li><li class="toc-item toc-2"><a href="#h-10-">10. 媒体嵌入</a></li><li class="toc-item toc-3"><a href="#h--">图片嵌入</a></li><li class="toc-item toc-3"><a href="#h-pdf-">PDF 嵌入</a></li><li class="toc-item toc-3"><a href="#h--">视频嵌入（占位）</a></li></ul></div>
       </nav>
     </aside>
   </div>
