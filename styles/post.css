@@ -188,7 +188,7 @@
   transition: color .2s;
 }
 .toc-item a:hover { color: var(--ink-2); }
-.toc-h3 { padding-left: 12px; }
+.toc-item.toc-3 a { padding-left: 12px; }
 
 /* ── List Pages ── */
 .list-hero { border-bottom: 1px solid var(--line); }
