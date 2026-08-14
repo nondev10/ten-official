@@ -132,16 +132,21 @@
   if (document.querySelector('.mermaid')) {
     const s = document.createElement('script');
     s.src = 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js';
-    s.onload = () => {
-      if (typeof mermaid !== 'undefined') {
-        if (document.readyState === 'loading') {
-          document.addEventListener('DOMContentLoaded', () => mermaid.run());
-        } else {
-          mermaid.run();
-        }
+    s.onload = () => { if (typeof mermaid !== 'undefined') mermaid.run(); };
+    document.head.appendChild(s);
+  }
+  if (document.querySelector('pre code')) {
+    const l = document.createElement('link');
+    l.rel = 'stylesheet'; l.href = 'https://cdn.jsdelivr.net/npm/highlight.js@11.9.0/styles/github-dark.min.css';
+    document.head.appendChild(l);
+    const c = document.createElement('script');
+    c.src = 'https://cdn.jsdelivr.net/npm/highlight.js@11.9.0/lib/core.min.js';
+    c.onload = () => {
+      if (typeof hljs !== 'undefined') {
+        document.querySelectorAll('pre code').forEach(el => hljs.highlightElement(el));
       }
     };
-    document.head.appendChild(s);
+    document.head.appendChild(c);
   }
   if (document.querySelector('.math-display')) {
     const ks = document.createElement('link');
