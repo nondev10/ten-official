@@ -120,6 +120,13 @@
   font-family: var(--mono); font-size: 9px; letter-spacing: .2em; text-transform: uppercase;
   color: var(--ink-4); background: var(--bg-2); border: 1px solid var(--line-2);
   border-radius: 0 3px 0 4px; padding: 4px 8px;
+  cursor: pointer; user-select: none; transition: color .15s, background .15s, border-color .15s;
+}
+.code-lang:hover {
+  color: var(--ink-2); background: var(--line-2); border-color: var(--ink-3);
+}
+.code-lang.copied {
+  color: #7dc4a3; background: rgba(125,196,163,.1); border-color: #7dc4a3;
 }
 .post-content pre code {
   background: none; padding: 0; border: none; font-size: 13px; line-height: 1.6;

@@ -36,3 +36,35 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
     if (t) { e.preventDefault(); t.scrollIntoView({ behavior: 'smooth' }); }
   });
 });
+
+/* ---------- Code block copy button ---------- */
+document.querySelectorAll('.code-lang').forEach(el => {
+  el.addEventListener('click', () => {
+    const codeBlock = el.closest('.code-block');
+    const code = codeBlock.querySelector('pre code');
+    if (!code) return;
+    const text = code.textContent || code.innerText;
+    navigator.clipboard.writeText(text).then(() => {
+      const original = el.textContent;
+      el.textContent = '已复制';
+      el.classList.add('copied');
+      setTimeout(() => {
+        el.textContent = original;
+        el.classList.remove('copied');
+      }, 800);
+    }).catch(() => {
+      // Fallback for older browsers
+      const ta = document.createElement('textarea');
+      ta.value = text;
+      ta.style.position = 'fixed'; ta.style.opacity = '0';
+      document.body.appendChild(ta);
+      ta.select();
+      document.execCommand('copy');
+      document.body.removeChild(ta);
+      const original = el.textContent;
+      el.textContent = '已复制';
+      el.classList.add('copied');
+      setTimeout(() => { el.textContent = original; el.classList.remove('copied'); }, 800);
+    });
+  });
+});
