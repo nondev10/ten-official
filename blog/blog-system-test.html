@@ -172,21 +172,44 @@ for i in range(10):
   if (document.querySelector('.mermaid')) {
     const s = document.createElement('script');
     s.src = 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js';
-    s.onload = () => { if (typeof mermaid !== 'undefined') mermaid.run(); };
+    s.onload = () => {
+      if (typeof mermaid !== 'undefined') {
+        mermaid.initialize({ startOnLoad: false });
+        mermaid.run();
+      }
+    };
     document.head.appendChild(s);
   }
   if (document.querySelector('pre code')) {
     const l = document.createElement('link');
-    l.rel = 'stylesheet'; l.href = 'https://cdn.jsdelivr.net/npm/highlight.js@11.9.0/styles/github-dark.min.css';
+    l.rel = 'stylesheet'; l.href = 'https://cdn.jsdelivr.net/npm/prismjs@1.29.0/themes/prism-twilight.min.css';
     document.head.appendChild(l);
-    const c = document.createElement('script');
-    c.src = 'https://cdn.jsdelivr.net/npm/highlight.js@11.9.0/lib/core.min.js';
-    c.onload = () => {
-      if (typeof hljs !== 'undefined') {
-        document.querySelectorAll('pre code').forEach(el => hljs.highlightElement(el));
-      }
+    const s = document.createElement('script');
+    s.src = 'https://cdn.jsdelivr.net/npm/prismjs@1.29.0/prism.min.js';
+    s.onload = () => {
+      if (typeof Prism === 'undefined') return;
+      // Detect languages used on this page and load missing ones
+      var langs = new Set();
+      document.querySelectorAll('pre code').forEach(el => {
+        var m = el.className.match(/language-(\w+)/);
+        if (m) langs.add(m[1]);
+      });
+      var loadLang = lang => {
+        if (Prism.languages[lang]) return Promise.resolve();
+        return new Promise((resolve, reject) => {
+          var x = new XMLHttpRequest();
+          x.open('GET', 'https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-' + lang + '.min.js', true);
+          x.onload = () => {
+            try { eval(x.responseText); resolve(); } catch(e) { resolve(); } // fail silently
+          };
+          x.onerror = () => resolve();
+        });
+      };
+      Promise.all(Array.from(langs).map(loadLang)).then(() => {
+        document.querySelectorAll('pre code').forEach(el => Prism.highlightElement(el));
+      });
     };
-    document.head.appendChild(c);
+    document.head.appendChild(s);
   }
   if (document.querySelector('.math-display')) {
     const ks = document.createElement('link');
