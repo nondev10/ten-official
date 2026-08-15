@@ -108,9 +108,9 @@
   color: var(--ink-2); border: 1px solid var(--line);
 }
 .post-content pre {
-  background: var(--bg-2); border: 1px solid var(--line-2);
+  background: var(--bg-2); border: none;
   padding: 20px 24px; overflow-x: auto; margin: 2rem 0;
-  border-radius: 4px;
+  border-radius: 4px; border-bottom: 1px solid var(--line-2);
 }
 .code-block {
   position: relative; margin: 2rem 0;
