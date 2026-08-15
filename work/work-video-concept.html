@@ -144,32 +144,30 @@
     const l = document.createElement('link');
     l.rel = 'stylesheet'; l.href = 'https://cdn.jsdelivr.net/npm/prismjs@1.29.0/themes/prism-twilight.min.css';
     document.head.appendChild(l);
-    const s = document.createElement('script');
-    s.src = 'https://cdn.jsdelivr.net/npm/prismjs@1.29.0/prism.min.js';
-    s.onload = () => {
-      if (typeof Prism === 'undefined') return;
-      // Detect languages used on this page and load missing ones
-      var langs = new Set();
-      document.querySelectorAll('pre code').forEach(el => {
-        var m = el.className.match(/language-(\w+)/);
-        if (m) langs.add(m[1]);
-      });
-      var loadLang = lang => {
-        if (Prism.languages[lang]) return Promise.resolve();
-        return new Promise((resolve, reject) => {
-          var x = new XMLHttpRequest();
-          x.open('GET', 'https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-' + lang + '.min.js', true);
-          x.onload = () => {
-            try { eval(x.responseText); resolve(); } catch(e) { resolve(); } // fail silently
-          };
-          x.onerror = () => resolve();
-        });
-      };
-      Promise.all(Array.from(langs).map(loadLang)).then(() => {
+    // Collect unique languages from code blocks
+    var langs = new Set();
+    document.querySelectorAll('pre code').forEach(el => {
+      var m = el.className.match(/language-(w+)/);
+      if (m) langs.add(m[1]);
+    });
+    // Load core first, then each language as a script (ensures correct load order)
+    var coreScript = document.createElement('script');
+    coreScript.src = 'https://cdn.jsdelivr.net/npm/prismjs@1.29.0/prism.min.js';
+    coreScript.onload = () => {
+      var scripts = Array.from(langs).map(lang => new Promise(resolve => {
+        if (Prism.languages[lang]) { resolve(); return; }
+        var s = document.createElement('script');
+        s.src = 'https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-' + lang + '.min.js';
+        s.onload = () => resolve();
+        s.onerror = () => { console.warn('[TEN] Failed to load prism language:', lang); resolve(); };
+        document.head.appendChild(s);
+      }));
+      Promise.all(scripts).then(() => {
         document.querySelectorAll('pre code').forEach(el => Prism.highlightElement(el));
       });
     };
-    document.head.appendChild(s);
+    coreScript.onerror = () => console.error('[TEN] Failed to load prism.js');
+    document.head.appendChild(coreScript);
   }
   if (document.querySelector('.math-display')) {
     const ks = document.createElement('link');
