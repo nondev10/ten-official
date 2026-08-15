@@ -131,10 +131,11 @@
   });
   if (document.querySelector('.mermaid')) {
     const s = document.createElement('script');
-    s.src = 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js';
+    s.src = 'https://cdn.jsdelivr.net/npm/mermaid@11.4.1/dist/mermaid.min.js';
+    s.setAttribute('defer', '');
     s.onload = () => {
       if (typeof mermaid !== 'undefined') {
-        mermaid.initialize({ startOnLoad: false });
+        mermaid.initialize({ startOnLoad: false, theme: 'dark' });
         mermaid.run();
       }
     };
@@ -147,7 +148,7 @@
     // Collect unique languages from code blocks
     var langs = new Set();
     document.querySelectorAll('pre code').forEach(el => {
-      var m = el.className.match(/language-(w+)/);
+      var m = el.className.match(new RegExp('language-(\w+)'));
       if (m) langs.add(m[1]);
     });
     // Load core first, then each language as a script (ensures correct load order)

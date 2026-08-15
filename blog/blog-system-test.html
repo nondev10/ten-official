@@ -121,7 +121,7 @@ for i in range(10):
 
 <h3 id="h-视频嵌入-占位">视频嵌入（占位）</h3>
 
-<figure class="post-media video" ><video controls preload="metadata" poster="../assets/images/placeholder.jpg" style="width:100%;height:auto;display:block"><source src="../assets/videos/test.mp4"></video><figcaption>示例视频</figcaption></figure>
+<figure class="post-media video" ><video controls preload="metadata" poster="" style="width:100%;height:auto;display:block"><source src="../assets/videos/test.mp4"></video><figcaption>示例视频</figcaption></figure>
 
 <hr>
 
@@ -171,10 +171,11 @@ for i in range(10):
   });
   if (document.querySelector('.mermaid')) {
     const s = document.createElement('script');
-    s.src = 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js';
+    s.src = 'https://cdn.jsdelivr.net/npm/mermaid@11.4.1/dist/mermaid.min.js';
+    s.setAttribute('defer', '');
     s.onload = () => {
       if (typeof mermaid !== 'undefined') {
-        mermaid.initialize({ startOnLoad: false });
+        mermaid.initialize({ startOnLoad: false, theme: 'dark' });
         mermaid.run();
       }
     };
@@ -187,7 +188,7 @@ for i in range(10):
     // Collect unique languages from code blocks
     var langs = new Set();
     document.querySelectorAll('pre code').forEach(el => {
-      var m = el.className.match(/language-(w+)/);
+      var m = el.className.match(new RegExp('language-(\w+)'));
       if (m) langs.add(m[1]);
     });
     // Load core first, then each language as a script (ensures correct load order)
