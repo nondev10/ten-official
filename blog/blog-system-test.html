@@ -44,7 +44,7 @@
   <div class="post-layout">
     <main class="post-main">
       <div class="post-tldr reveal"><span class="tldr-label">TL;DR</span><p>这是一个测试页面，用于验证 TEN 内容引擎的所有功能。</p></div>
-      <div class="post-content reveal r1">
+      <div class="post-content">
 <h2 id="h-1-标题层级">1. 标题层级</h2>
 
 <h1 id="h-h1-标题">H1 标题</h1>
@@ -163,12 +163,6 @@ for i in range(10):
 
 <script src="../assets/js/main.js" defer></script>
 <script>
-  document.querySelectorAll('.reveal').forEach(el => {
-    const obs = new IntersectionObserver(entries => {
-      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } });
-    }, { threshold: 0.1 });
-    obs.observe(el);
-  });
   if (document.querySelector('.mermaid')) {
     const ms = document.createElement('script');
     ms.src = 'https://cdn.jsdelivr.net/npm/mermaid@11.4.1/dist/mermaid.min.js';

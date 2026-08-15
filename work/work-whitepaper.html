@@ -44,7 +44,7 @@
   <div class="post-layout">
     <main class="post-main">
       <div class="post-tldr reveal"><span class="tldr-label">TL;DR</span><p>从零到一建立一套可复用、可扩展的团队协作标准，覆盖文档格式、版本控制、审核流程与工具链配置四个维度。</p></div>
-      <div class="post-content reveal r1">
+      <div class="post-content">
 <h2 id="h-为什么需要标准">为什么需要标准</h2>
 
 <p>协作中最常见的问题不是技术问题，而是<strong>对齐成本过高</strong>。</p>
@@ -156,12 +156,6 @@
 
 <script src="../assets/js/main.js" defer></script>
 <script>
-  document.querySelectorAll('.reveal').forEach(el => {
-    const obs = new IntersectionObserver(entries => {
-      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } });
-    }, { threshold: 0.1 });
-    obs.observe(el);
-  });
   if (document.querySelector('.mermaid')) {
     const ms = document.createElement('script');
     ms.src = 'https://cdn.jsdelivr.net/npm/mermaid@11.4.1/dist/mermaid.min.js';
