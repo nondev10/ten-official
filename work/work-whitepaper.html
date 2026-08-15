@@ -44,7 +44,7 @@
   <div class="post-layout">
     <main class="post-main">
       <div class="post-tldr reveal"><span class="tldr-label">TL;DR</span><p>从零到一建立一套可复用、可扩展的团队协作标准，覆盖文档格式、版本控制、审核流程与工具链配置四个维度。</p></div>
-      <div class="post-content">
+      <div class="post-content reveal r1">
 <h2 id="h-为什么需要标准">为什么需要标准</h2>
 
 <p>协作中最常见的问题不是技术问题，而是<strong>对齐成本过高</strong>。</p>
@@ -91,20 +91,20 @@
 
 <h3 id="h-案例一-多作者技术文档协作">案例一：多作者技术文档协作</h3>
 
-<pre><code>┌─────────────────────────────────────────────┐
+<div class="code-block"><pre><code>┌─────────────────────────────────────────────┐
 │  Git Flow + Markdown + Review Lint         │
 │                                             │
 │  master ← develop ← feature/article-XXX    │
 │      ↑             ↑            ↑           │
 │   发布          写作          草稿         │
-└─────────────────────────────────────────────┘</code></pre>
+└─────────────────────────────────────────────┘</code></pre></div>
 
 <h3 id="h-案例二-开源库的版本管理">案例二：开源库的版本管理</h3>
 
-<pre><code>semver: MAJOR.MINOR.PATCH
+<div class="code-block"><pre><code>semver: MAJOR.MINOR.PATCH
   - MAJOR: 不兼容的 API 变更
   - MINOR: 向后兼容的功能新增
-  - PATCH: 向后兼容的问题修复</code></pre>
+  - PATCH: 向后兼容的问题修复</code></pre></div>
 
 <hr>
 
