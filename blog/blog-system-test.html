@@ -28,22 +28,22 @@
 <section class="post-hero">
   <div class="post-hero-img"><img src="../assets/images/placeholder.jpg" alt="" /></div>
   <div class="post-hero-content">
-    <div class="post-meta-row reveal">
+    <div class="post-meta-row">
       <span class="post-cat-badge" style="--cat-color:#7dc4a3">洞见</span>
       <span class="post-tag">Test</span>
       <span class="post-date">2026年8月13日</span>
       
     </div>
-    <h1 class="post-title reveal r1">内容系统功能测试</h1>
-    <p class="post-author reveal r2">作者：TEN System</p>
-    <p class="post-summary reveal r2">验证 Markdown 解析器所有功能。</p>
+    <h1 class="post-title">内容系统功能测试</h1>
+    <p class="post-author">作者：TEN System</p>
+    <p class="post-summary">验证 Markdown 解析器所有功能。</p>
   </div>
 </section>
 
 <section class="post-body-section">
   <div class="post-layout">
     <main class="post-main">
-      <div class="post-tldr reveal"><span class="tldr-label">TL;DR</span><p>这是一个测试页面，用于验证 TEN 内容引擎的所有功能。</p></div>
+      <div class="post-tldr"><span class="tldr-label">TL;DR</span><p>这是一个测试页面，用于验证 TEN 内容引擎的所有功能。</p></div>
       <div class="post-content reveal r1">
 <h2 id="h-1-标题层级">1. 标题层级</h2>
 
@@ -188,7 +188,7 @@ for i in range(10):
     // Collect unique languages from code blocks
     var langs = new Set();
     document.querySelectorAll('pre code').forEach(el => {
-      var m = el.className.match(new RegExp('language-(\w+)'));
+      var m = el.className.match(new RegExp('language-(\\w+)'));
       if (m) langs.add(m[1]);
     });
     // Load core first, then each language as a script (ensures correct load order)

@@ -28,22 +28,22 @@
 <section class="post-hero">
   
   <div class="post-hero-content">
-    <div class="post-meta-row reveal">
+    <div class="post-meta-row">
       <span class="post-cat-badge" style="--cat-color:#7dc4a3">洞见</span>
       <span class="post-tag">Essay</span>
       <span class="post-date">2026年4月23日</span>
       
     </div>
-    <h1 class="post-title reveal r1">韧性：超个性化之后的体验设计</h1>
-    <p class="post-author reveal r2">作者：TEN Writer</p>
-    <p class="post-summary reveal r2">在计算的尽头，成熟的体验设计回归克制与人性化的节奏。</p>
+    <h1 class="post-title">韧性：超个性化之后的体验设计</h1>
+    <p class="post-author">作者：TEN Writer</p>
+    <p class="post-summary">在计算的尽头，成熟的体验设计回归克制与人性化的节奏。</p>
   </div>
 </section>
 
 <section class="post-body-section">
   <div class="post-layout">
     <main class="post-main">
-      <div class="post-tldr reveal"><span class="tldr-label">TL;DR</span><p>过度个性化正在制造认知疲劳。下一个体验设计的方向不是更强的算法，而是更强的克制——设计能容忍不确定性、允许留白、尊重用户自主性的系统。</p></div>
+      <div class="post-tldr"><span class="tldr-label">TL;DR</span><p>过度个性化正在制造认知疲劳。下一个体验设计的方向不是更强的算法，而是更强的克制——设计能容忍不确定性、允许留白、尊重用户自主性的系统。</p></div>
       <div class="post-content reveal r1">
 <h2 id="h-个性化悖论">个性化悖论</h2>
 
@@ -181,7 +181,7 @@
     // Collect unique languages from code blocks
     var langs = new Set();
     document.querySelectorAll('pre code').forEach(el => {
-      var m = el.className.match(new RegExp('language-(\w+)'));
+      var m = el.className.match(new RegExp('language-(\\w+)'));
       if (m) langs.add(m[1]);
     });
     // Load core first, then each language as a script (ensures correct load order)
