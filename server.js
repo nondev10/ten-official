@@ -15,7 +15,7 @@ const MIME_TYPES = {
 };
 
 export default {
-  async fetch(request, env, ctx) {
+  async fetch(request, env) {
     const url = new URL(request.url);
     let pathname = decodeURIComponent(url.pathname);
 
@@ -24,19 +24,16 @@ export default {
       return new Response('Forbidden', { status: 403 });
     }
 
-    try {
-      // 尝试从 ASSETS 获取文件
-      const asset = await env.ASSETS.fetch(new Request(`https://dummy${pathname}`));
+    // 默认页面
+    if (pathname === '/' || pathname.endsWith('/')) {
+      pathname += 'index.html';
+    }
 
-      if (asset.status === 404) {
-        // 尝试默认页面
-        if (pathname === '/' || pathname.endsWith('/')) {
-          pathname += 'index.html';
-          const defaultAsset = await env.ASSETS.fetch(new Request(`https://dummy${pathname}`));
-          if (!defaultAsset.status) {
-            return defaultAsset;
-          }
-        }
+    try {
+      // 从 ASSETS 获取文件
+      const asset = await env.ASSETS.fetch(`https://dummy${pathname}`);
+
+      if (asset.status !== 200) {
         return new Response('Not Found', { status: 404 });
       }
 
@@ -47,8 +44,11 @@ export default {
         headers: { 'Content-Type': contentType },
       });
     } catch (e) {
-      console.error('Error:', e.message);
-      return new Response('Internal Server Error', { status: 500 });
+      console.error('Fetch error:', e.message);
+      return new Response('Internal Server Error', {
+        status: 500,
+        headers: { 'Content-Type': 'text/plain' },
+      });
     }
   }
 };
