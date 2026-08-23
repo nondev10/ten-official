@@ -1,8 +1,3 @@
-const { readFileSync, existsSync } = require('node:fs');
-const path = require('node:path');
-const { fileURLToPath } = require('node:url');
-
-// Cloudflare Workers 静态文件服务器
 const MIME_TYPES = {
   '.html': 'text/html; charset=utf-8',
   '.css': 'text/css; charset=utf-8',
@@ -20,25 +15,40 @@ const MIME_TYPES = {
 };
 
 export default {
-  async fetch(request) {
+  async fetch(request, env, ctx) {
     const url = new URL(request.url);
     let pathname = decodeURIComponent(url.pathname);
 
-    // 静态文件路径
-    const filePath = path.join(process.cwd(), pathname);
-    if (!existsSync(filePath)) {
-      return new Response('Not Found', { status: 404 });
+    // 安全路径检查
+    if (pathname.includes('..')) {
+      return new Response('Forbidden', { status: 403 });
     }
 
-    const ext = path.extname(filePath);
-    const contentType = MIME_TYPES[ext] || 'application/octet-stream';
-
+    // 读取文件
     try {
-      const data = readFileSync(filePath);
-      return new Response(data, {
+      const filePath = new URL(`./${pathname}`, import.meta.url);
+      const file = await env.ASSETS?.get(filePath.pathname) || null;
+
+      if (!file) {
+        // 尝试默认页面
+        if (pathname === '/' || pathname.endsWith('/')) {
+          pathname += 'index.html';
+          const defaultFile = await env.ASSETS?.get(pathname);
+          if (defaultFile) {
+            return defaultFile;
+          }
+        }
+        return new Response('Not Found', { status: 404 });
+      }
+
+      const contentType = MIME_TYPES[path.extname(pathname)] || 'application/octet-stream';
+      const body = await file.text();
+
+      return new Response(body, {
         headers: { 'Content-Type': contentType },
       });
     } catch (e) {
+      console.error('Error:', e);
       return new Response('Internal Server Error', { status: 500 });
     }
   }
