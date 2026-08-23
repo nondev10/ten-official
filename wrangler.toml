@@ -1,13 +1,11 @@
 name = "ten-site"
 main = "server.js"
 compatibility_date = "2024-01-01"
+node_compat = false
 
 [build]
-command = "node build/generate.js"
+command = "node build/generate.js && rm -rf node_modules"
 
 [assets]
 directory = "."
 binding = "ASSETS"
-
-[env.production]
-name = "ten-site-production"
