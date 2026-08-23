@@ -1,10 +1,8 @@
-const http = require('http');
-const fs = require('fs');
-const path = require('path');
+const { readFileSync, existsSync } = require('node:fs');
+const path = require('node:path');
+const { fileURLToPath } = require('node:url');
 
-const ROOT = path.resolve('E:/Desktop/TEN/ten-site');
-const PORT = 8888;
-
+// Cloudflare Workers 静态文件服务器
 const MIME_TYPES = {
   '.html': 'text/html; charset=utf-8',
   '.css': 'text/css; charset=utf-8',
@@ -21,32 +19,27 @@ const MIME_TYPES = {
   '.woff2': 'font/woff2',
 };
 
-const server = http.createServer((req, res) => {
-  // Normalize URL path
-  let pathname = decodeURIComponent(new URL(req.url, `http://localhost:${PORT}`).pathname);
-  if (pathname === '/') pathname = '/index.html';
+export default {
+  async fetch(request) {
+    const url = new URL(request.url);
+    let pathname = decodeURIComponent(url.pathname);
 
-  const filePath = path.join(ROOT, pathname);
-
-  // Security: prevent directory traversal
-  if (!filePath.startsWith(ROOT)) {
-    res.writeHead(403);
-    res.end('Forbidden');
-    return;
-  }
-
-  fs.readFile(filePath, (err, data) => {
-    if (err) {
-      res.writeHead(404);
-      res.end('Not Found');
-      return;
+    // 静态文件路径
+    const filePath = path.join(process.cwd(), pathname);
+    if (!existsSync(filePath)) {
+      return new Response('Not Found', { status: 404 });
     }
-    const ext = path.extname(filePath);
-    res.writeHead(200, { 'Content-Type': MIME_TYPES[ext] || 'application/octet-stream' });
-    res.end(data);
-  });
-});
 
-server.listen(PORT, '127.0.0.1', () => {
-  console.log(`TEN server running at http://localhost:${PORT}`);
-});
+    const ext = path.extname(filePath);
+    const contentType = MIME_TYPES[ext] || 'application/octet-stream';
+
+    try {
+      const data = readFileSync(filePath);
+      return new Response(data, {
+        headers: { 'Content-Type': contentType },
+      });
+    } catch (e) {
+      return new Response('Internal Server Error', { status: 500 });
+    }
+  }
+};
