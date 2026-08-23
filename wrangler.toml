@@ -1,7 +1,7 @@
 name = "ten-site"
 main = "server.js"
 compatibility_date = "2024-01-01"
-node_compat = false
+compatibility_flags = ["nodejs_compat"]
 
 [build]
 command = "node build/generate.js && rm -rf node_modules"
