@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Mermaid 诊断 · TEN</title>
+<style>
+  body{background:#0a0a0c;color:#f0f0f4;font-family:'JetBrains Mono',monospace;padding:20px;font-size:13px;}
+  h1{font-family:'Barlow Condensed',sans-serif;font-size:1.5rem;margin-bottom:8px;}
+  .test{margin:16px 0;padding:16px;background:#0e0e12;border:1px solid #222;border-radius:4px;}
+  .test h3{margin:0 0 8px;font-size:12px;color:#7eb8da;}
+  #log{background:#111;padding:16px;border-radius:4px;margin-top:16px;}
+  #log div{margin:2px 0;}
+  .ok{color:#7dc4a3;} .err{color:#c47d9a;} .warn{color:#c4a35a;}
+  pre.mermaid{background:#0e0e12;padding:16px;border-radius:4px;margin:8px 0;overflow:auto;}
+</style>
+</head>
+<body>
+<h1>Mermaid v11 诊断</h1>
+<p>测试 mermaid 渲染的各个阶段</p>
+
+<div class="test">
+  <h3>Test A: ASCII diagram (baseline)</h3>
+  <pre class="mermaid">graph TD
+    A[TEN] --> B[Parser]
+    B --> C[Render]</pre>
+</div>
+
+<div class="test">
+  <h3>Test B: Chinese labels</h3>
+  <pre class="mermaid">graph TD
+    A[TEN 内容系统] --> B[Markdown 解析器]
+    B --> C[静态生成器]</pre>
+</div>
+
+<div class="test">
+  <h3>Test C: Full diagram (from blog-system-test)</h3>
+  <pre class="mermaid">graph TD
+    A[TEN 内容系统] --> B[Markdown 解析器]
+    A --> C[静态生成器]
+    B --> D[表格渲染]
+    B --> E[列表渲染]
+    B --> F[代码高亮]</pre>
+</div>
+
+<h3>诊断日志</h3>
+<div id="log">
+  <div class="warn">初始化中...</div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js"></script>
+<script>
+var log = document.getElementById('log');
+var tests = [];
+
+function write(msg, cls) {
+  var d = document.createElement('div');
+  d.className = cls || '';
+  d.textContent = '[' + new Date().toISOString().substr(11,12) + '] ' + msg;
+  log.appendChild(d);
+  console.log(msg);
+}
+
+write('document.readyState=' + document.readyState, 'warn');
+write('typeof mermaid=' + typeof mermaid, 'warn');
+
+// Test initialize
+try {
+  mermaid.initialize({
+    startOnLoad: false,
+    theme: 'dark',
+    securityLevel: 'loose',
+    themeVariables: {
+      primaryColor: '#7eb8da',
+      primaryTextColor: '#f0f0f4',
+      primaryBorderColor: '#333',
+      lineColor: '#666',
+      secondaryColor: '#0e0e12',
+      tertiaryColor: '#0a0a0c'
+    }
+  });
+  write('initialize() OK', 'ok');
+} catch(e) {
+  write('initialize() FAILED: ' + e.message, 'err');
+}
+
+// Test parse on ASCII
+write('\n--- Test A: ASCII parse ---', 'warn');
+var asciiText = `graph TD
+    A[TEN] --> B[Parser]
+    B --> C[Render]`;
+write('text length: ' + asciiText.length);
+write('first 30 chars: ' + JSON.stringify(asciiText.substring(0,30)));
+mermaid.parse(asciiText).then(function(r) {
+  write('parse() OK: ' + JSON.stringify(r), 'ok');
+}).catch(function(e) {
+  write('parse() FAILED: ' + e.message, 'err');
+  write('error type: ' + e.constructor.name, 'err');
+});
+
+// Test parse on Chinese
+write('\n--- Test B: Chinese parse ---', 'warn');
+var cnText = `graph TD
+    A[TEN 内容系统] --> B[Markdown 解析器]
+    B --> C[静态生成器]`;
+write('text length: ' + cnText.length);
+write('chars 0-5 hex: ' + Array.from(cnText.substring(0,5)).map(c=>'U+'+c.charCodeAt(0).toString(16).padStart(4,'0')).join(' '));
+mermaid.parse(cnText).then(function(r) {
+  write('parse() OK: ' + JSON.stringify(r), 'ok');
+}).catch(function(e) {
+  write('parse() FAILED: ' + e.message, 'err');
+  write('error type: ' + e.constructor.name, 'err');
+  if (e.stack) write('stack: ' + e.stack.substring(0,500), 'err');
+});
+
+// Test parse on full diagram
+write('\n--- Test C: Full diagram parse ---', 'warn');
+var fullText = `graph TD
+    A[TEN 内容系统] --> B[Markdown 解析器]
+    A --> C[静态生成器]
+    B --> D[表格渲染]
+    B --> E[列表渲染]
+    B --> F[代码高亮]`;
+write('text length: ' + fullText.length);
+mermaid.parse(fullText).then(function(r) {
+  write('parse() OK: ' + JSON.stringify(r), 'ok');
+}).catch(function(e) {
+  write('parse() FAILED: ' + e.message, 'err');
+});
+
+// Test mermaid.run()
+write('\n--- Test D: mermaid.run() ---', 'warn');
+mermaid.run().then(function() {
+  write('run() OK, SVGs: ' + document.querySelectorAll('.mermaid svg').length, 'ok');
+}).catch(function(e) {
+  write('run() FAILED: ' + e.message, 'err');
+  write('full error: ' + JSON.stringify(e), 'err');
+});
+
+// Also test manual render
+write('\n--- Test E: manual renderDiagram() ---', 'warn');
+try {
+  mermaid.render('test-svg', fullText).then(function(r) {
+    write('renderDiagram() OK, svg length: ' + r.svg.length, 'ok');
+  }).catch(function(e) {
+    write('renderDiagram() FAILED: ' + e.message, 'err');
+  });
+} catch(e) {
+  write('renderDiagram() threw: ' + e.message, 'err');
+}
+</script>
+</body></html>
