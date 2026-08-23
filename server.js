@@ -20,35 +20,34 @@ export default {
     let pathname = decodeURIComponent(url.pathname);
 
     // 安全路径检查
-    if (pathname.includes('..')) {
+    if (pathname.includes('..') || pathname.includes('%2e%2e')) {
       return new Response('Forbidden', { status: 403 });
     }
 
-    // 读取文件
     try {
-      const filePath = new URL(`./${pathname}`, import.meta.url);
-      const file = await env.ASSETS?.get(filePath.pathname) || null;
+      // 尝试从 ASSETS 获取文件
+      const asset = await env.ASSETS.fetch(new Request(`https://dummy${pathname}`));
 
-      if (!file) {
+      if (asset.status === 404) {
         // 尝试默认页面
         if (pathname === '/' || pathname.endsWith('/')) {
           pathname += 'index.html';
-          const defaultFile = await env.ASSETS?.get(pathname);
-          if (defaultFile) {
-            return defaultFile;
+          const defaultAsset = await env.ASSETS.fetch(new Request(`https://dummy${pathname}`));
+          if (!defaultAsset.status) {
+            return defaultAsset;
           }
         }
         return new Response('Not Found', { status: 404 });
       }
 
-      const contentType = MIME_TYPES[path.extname(pathname)] || 'application/octet-stream';
-      const body = await file.text();
+      const ext = pathname.slice(pathname.lastIndexOf('.'));
+      const contentType = MIME_TYPES[ext] || 'application/octet-stream';
 
-      return new Response(body, {
+      return new Response(await asset.text(), {
         headers: { 'Content-Type': contentType },
       });
     } catch (e) {
-      console.error('Error:', e);
+      console.error('Error:', e.message);
       return new Response('Internal Server Error', { status: 500 });
     }
   }
